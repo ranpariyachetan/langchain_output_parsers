@@ -22,15 +22,13 @@ class Person(BaseModel):
 parser = PydanticOutputParser(pydantic_object=Person)
 
 template = PromptTemplate(
-    template = "Generate the name, age and city of a fictional person from {place} \n {format_instruction}",
+    template = "Generate the name, age and city of a fictional person from {place}. \n {format_instruction}",
     input_variables= ["place"],
     partial_variables={"format_instruction": parser.get_format_instructions()}
 )
 
-prompt = template.invoke({"place": "India"})
+chain = template | model | parser
 
-result = model.invoke(prompt)
-
-final_result = parser.parse(result.content)
+final_result = chain.invoke({"place": "Australia"})
 
 print(final_result)
