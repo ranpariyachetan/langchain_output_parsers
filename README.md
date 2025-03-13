@@ -1,0 +1,1 @@
+This repository was created as part of learning Output Parsers in LangChain thru [Youtube video](https://www.youtube.com/watch?v=Op6PbJZ5b2Q) from [CampusX channel](https://www.youtube.com/@campusx-official).
